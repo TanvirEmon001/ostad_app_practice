@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ostad_flutter/alert_dialog_practice.dart';
 import 'package:ostad_flutter/grid_view_builder.dart';
 import 'package:ostad_flutter/input_form.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: "Tanvir Emon",
       debugShowCheckedModeBanner: false,
-      home: TourApp(),
+      home: AlertDialogPractice(),
     );
   }
 
