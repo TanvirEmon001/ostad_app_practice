@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: "Tanvir Emon",
       debugShowCheckedModeBanner: false,
-      home: AlertDialogPractice(),
+      home: TourApp(),
     );
   }
 

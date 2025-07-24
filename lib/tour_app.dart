@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ostad_flutter/reuseable_widget/stack_widget_view.dart';
+import 'package:ostad_flutter/reuseable_widget/top_destinations.dart';
 
 class TourApp extends StatelessWidget {
-  TourApp({super.key});
+  const TourApp({super.key});
 
   @override
   Widget build(BuildContext context){
@@ -28,56 +30,134 @@ class TourApp extends StatelessWidget {
           IconButton(onPressed: (){}, icon: Icon(Icons.notifications, color: Colors.white,))
         ],
       ),
+      drawer: Drawer(
+        backgroundColor: Color(0xFF1C242F),//0xFF233040
+        elevation: 5,
+        surfaceTintColor: Colors.black,
+        child: ListView(
+          children: [
+            // DrawerHeader(
+            //   decoration: BoxDecoration(
+            //     color: Color(0xFF233040)
+            //   ),
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         CircleAvatar(
+            //           backgroundImage: AssetImage("assets/img/ai_img.png"),
+            //           radius: 42,
+            //         ),
+            //         Text(
+            //           'Tanvir Emon',
+            //           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            //         ),
+            //         Text(
+            //           '@tanviremon',
+            //           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            //         )
+            //       ],
+            //     )
+            // ),
+            Container(
+              height: 180,
+              decoration: BoxDecoration(
+                color: Color(0xFF233040)
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15, top: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: AssetImage("assets/img/tanvir_emon.jpg"),
+                      radius: 40,
+                    ),
+                    SizedBox(height: 15,),
+                    Text("TANVIR EMON", style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20
+                    ),),
+                    SizedBox(height: 5,),
+                    Text("+880 1775097721", style: TextStyle(
+                        color: Color(0xFF7B8FA1), fontWeight: FontWeight.bold, fontSize: 15
+                    ),),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            ListTile(
+              title: Text('TekniumSoft', style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold
+              ),),
+              leading: CircleAvatar(
+                backgroundImage: AssetImage("assets/img/teknium_soft.jpg"),
+                radius: 30,//#121923
+              ),
+              onTap: () {},
+            ),
+            SizedBox(height: 10,),
+            ListTile(
+              title: Text('EMON HOSSAIN', style: TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold
+              ),),
+              leading: CircleAvatar(
+                backgroundImage: AssetImage("assets/img/ai_img.png"),
+                radius: 30,//#121923
+              ),
+              onTap: () {},
+            ),
+            SizedBox(height: 10,),
+            ListTile(
+              title: Text('TANVIR EMON', style: TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold
+              ),),
+              leading: Stack(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage("assets/img/tanvir_emon.jpg"),
+                    radius: 30,//#121923
+                  ),
+                  Positioned(
+                    bottom: -2,
+                      right: -2,
+                      child: Icon(Icons.check_circle_rounded, color: Colors.lightBlue,)
+                  )
+                ],
+              ),
+              onTap: () {},
+            ),
+            SizedBox(height: 10,),
+            ListTile(
+              title: Text('Add Account', style: TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold
+              ),),
+              leading: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(Icons.add, color: Color(0xFF7C8C99), size: 40,),
+              ),
+              onTap: () {},
+            ),
+            Divider(
+              color: Color(0xFF121923),
+            ),
+            ListTile(
+
+              title: Text('My Profile', style: TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold
+              ),),
+              leading: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(Icons.perm_identity_rounded, color: Color(0xFF7C8C99), size: 40,),
+              ),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Stack(
-              children: [
-                Container(
-                  height: 200,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage("https://media.istockphoto.com/id/2165182012/photo/kuala-lumpur-city-view-at-night-with-saloma-bridge-connecting-the-old-and-new-city-buildings.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZwGfA3cgdTfrbp_CNLlDtivooyG1XP5BNl_Qcrz2ZVM="), fit: BoxFit.cover),
-                  ),
-                ),
-                Positioned(
-                  bottom: 100,
-                  left: 15,
-                  child: Column(
-                    children: [
-                      Text("Explore The world", style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30
-                      ),),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: 50,
-                  left: 15,
-                  child: Container(
-                    height: 50,
-                    width: 250,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Search Destination...',
-                          prefixIcon: Icon(Icons.search),
-                          border: InputBorder.none
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
+            StackWidgetView(),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
@@ -95,101 +175,17 @@ class TourApp extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Flexible(
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(15), // Adjust radius as needed
-                              child: Image.network(
-                                'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8UGFyaXN8ZW58MHx8MHx8fDA%3D',
-                                fit: BoxFit.cover,
-                                width: 180, // or double.infinity
-                                height: 120,
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 5,
-                              left: 10,
-                              child: Text("Paris", style: TextStyle(
-                                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18
-                              ),),
-                            )
-                          ],
-                        ),
-                      ),
+                      TopDestinations(destinationName: 'Paris', imageLink: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8UGFyaXN8ZW58MHx8MHx8fDA%3D',),
                       SizedBox(width: 10,),
-                      Flexible(
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(15), // Adjust radius as needed
-                              child: Image.network(
-                                'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG9jZWFufGVufDB8fDB8fHww',
-                                fit: BoxFit.cover,
-                                width: 180, // or double.infinity
-                                height: 120,
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 5,
-                              left: 10,
-                              child: Text("Maldives", style: TextStyle(
-                                  color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18
-                              ),),
-                            )
-                          ],
-                        ),
-                      ),
+                      TopDestinations(destinationName: "Maldives", imageLink: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG9jZWFufGVufDB8fDB8fHww"),
                     ],
                   ),
                   SizedBox(height: 10,),
                   Row(
                     children: [
-                      Flexible(
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(15), // Adjust radius as needed
-                              child: Image.network(
-                                'https://plus.unsplash.com/premium_photo-1733317416241-d92ba6af4e51?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fER1YmFpfGVufDB8fDB8fHww',
-                                fit: BoxFit.cover,
-                                width: 180, // or double.infinity
-                                height: 120,
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 5,
-                              left: 10,
-                              child: Text("Dubai", style: TextStyle(
-                                  color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18
-                              ),),
-                            )
-                          ],
-                        ),
-                      ),
+                      TopDestinations(destinationName: "Dubai", imageLink: "https://plus.unsplash.com/premium_photo-1733317416241-d92ba6af4e51?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fER1YmFpfGVufDB8fDB8fHww"),
                       SizedBox(width: 10,),
-                      Flexible(
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(15), // Adjust radius as needed
-                              child: Image.network(
-                                'https://media.istockphoto.com/id/2103822423/photo/aerial-view-of-a-serene-beach-dreamland-with-golden-sands-rocky-cliffs-and-crystal-blue.webp?a=1&b=1&s=612x612&w=0&k=20&c=A5bptWYALRcoLsnfpVqXw0nNepLIAPSzkKVmuujGqfo=',
-                                fit: BoxFit.cover,
-                                width: 180, // or double.infinity
-                                height: 120,
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 5,
-                              left: 10,
-                              child: Text("Bali", style: TextStyle(
-                                  color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18
-                              ),),
-                            )
-                          ],
-                        ),
-                      ),
+                      TopDestinations(destinationName: "Bali", imageLink: "https://media.istockphoto.com/id/2103822423/photo/aerial-view-of-a-serene-beach-dreamland-with-golden-sands-rocky-cliffs-and-crystal-blue.webp?a=1&b=1&s=612x612&w=0&k=20&c=A5bptWYALRcoLsnfpVqXw0nNepLIAPSzkKVmuujGqfo=")
                     ],
                   ),
                   SizedBox(height: 10,),
@@ -289,3 +285,4 @@ class TourApp extends StatelessWidget {
     );
   }
 }
+
