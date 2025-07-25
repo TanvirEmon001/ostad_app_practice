@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ostad_flutter/reuseable_widget/stack_widget_view.dart';
 import 'package:ostad_flutter/reuseable_widget/top_destinations.dart';
+import 'package:ostad_flutter/reuseable_widget/tour_details_page.dart';
 
 class TourApp extends StatelessWidget {
   const TourApp({super.key});
@@ -9,10 +10,10 @@ class TourApp extends StatelessWidget {
   Widget build(BuildContext context){
 
     List<Map<String,String>> trendingPackagesList = [
-      {"name" : "Romantic Paris Getaway", "stay" : "4 nights * 5 days", "price" : "\$799", "imgLink" : "https://images.unsplash.com/photo-1549699143-b6bf1cde4605?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Um9tYW50aWMlMjBQYXJpcyUyMEdldHdheXxlbnwwfHwwfHx8MA%3D%3D"},
-      {"name" : "Bali Adventure Tour", "stay" : "4 nights * 5 days", "price" : "\$599", "imgLink" : "https://images.unsplash.com/photo-1732310067314-0c0d406e7c6b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
-      {"name" : "Nepal Tour", "stay" : "4 nights * 5 days", "price" : "\$599", "imgLink" : "https://media.istockphoto.com/id/1755473742/photo/kathmandu-stupa.webp?a=1&b=1&s=612x612&w=0&k=20&c=ebHi0m5BarsRKMGz_GJGj7esccPRbjivYZZ5xPy8y_c="},
-      {"name" : "Maldive Tour", "stay" : "4 nights * 5 days", "price" : "\$599", "imgLink" : "https://media.istockphoto.com/id/172699850/photo/climbing-everest.webp?a=1&b=1&s=612x612&w=0&k=20&c=s5kd-OXe8i0CSAYS0Ki1z0goJ-Mn1HbeGQfn8HnIemc="},
+      {"placeName" : "Paris", "name" : "Romantic Paris Getaway", "stay" : "4 nights * 5 days", "price" : "\$799", "imgLink" : "https://images.unsplash.com/photo-1549699143-b6bf1cde4605?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Um9tYW50aWMlMjBQYXJpcyUyMEdldHdheXxlbnwwfHwwfHx8MA%3D%3D"},
+      {"placeName" : "Bali", "name" : "Bali Adventure Tour", "stay" : "4 nights * 5 days", "price" : "\$599", "imgLink" : "https://images.unsplash.com/photo-1732310067314-0c0d406e7c6b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+      {"placeName" : "Nepal", "name" : "Nepal Tour", "stay" : "4 nights * 5 days", "price" : "\$599", "imgLink" : "https://media.istockphoto.com/id/1755473742/photo/kathmandu-stupa.webp?a=1&b=1&s=612x612&w=0&k=20&c=ebHi0m5BarsRKMGz_GJGj7esccPRbjivYZZ5xPy8y_c="},
+      {"placeName" : "Maldive", "name" : "Maldive Tour", "stay" : "4 nights * 5 days", "price" : "\$599", "imgLink" : "https://media.istockphoto.com/id/172699850/photo/climbing-everest.webp?a=1&b=1&s=612x612&w=0&k=20&c=s5kd-OXe8i0CSAYS0Ki1z0goJ-Mn1HbeGQfn8HnIemc="},
     ];
 
 
@@ -204,73 +205,78 @@ class TourApp extends StatelessWidget {
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return Card(
-                          color: Colors.white,
-                          elevation: 5,
-                          child: Container(
-                            height: 120,
-                            child: Row(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
-                                  child: Image.network(
-                                      trendingPackagesList[index]["imgLink"]!,
-                                    fit: BoxFit.cover,
-                                    height: double.infinity,
-                                    width: 120,
+                        return GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => TourDetailsPage(image: trendingPackagesList[index]["imgLink"]!, name: trendingPackagesList[index]["placeName"]!)));
+                          },
+                          child: Card(
+                            color: Colors.white,
+                            elevation: 5,
+                            child: SizedBox(
+                              height: 120,
+                              child: Row(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+                                    child: Image.network(
+                                        trendingPackagesList[index]["imgLink"]!,
+                                      fit: BoxFit.cover,
+                                      height: double.infinity,
+                                      width: 120,
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(trendingPackagesList[index]["name"]!, style: TextStyle(
-                                        color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold
-                                      ),),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          Icon(Icons.access_time, color: Colors.grey,),
-                                          SizedBox(width: 5,),
-                                          Text(
-                                              trendingPackagesList[index]["stay"]!
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(height: 10,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Text(
-                                              trendingPackagesList[index]["price"]!,
-                                            style: TextStyle(
-                                              color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 18
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(trendingPackagesList[index]["name"]!, style: TextStyle(
+                                          color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold
+                                        ),),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Icon(Icons.access_time, color: Colors.grey,),
+                                            SizedBox(width: 5,),
+                                            Text(
+                                                trendingPackagesList[index]["stay"]!
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(height: 10,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Text(
+                                                trendingPackagesList[index]["price"]!,
+                                              style: TextStyle(
+                                                color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 15
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(width: 50,),
-                                          Container(
-                                            height: 40,
-                                            width: 100,
-                                            decoration: BoxDecoration(
-                                              color: Colors.blue,
-                                              borderRadius: BorderRadius.circular(15)
-                                            ),
-                                            child: Center(
+                                            SizedBox(width: 30,),
+                                            SizedBox(
+                                              height: 40,
+                                              width: 120,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Colors.blueAccent
+                                                ),
+                                                onPressed: (){},
                                                 child: Text(
                                                     "Book Now",
                                                   style: TextStyle(
-                                                    color: Colors.white, fontWeight: FontWeight.bold
+                                                    color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13
                                                   ),
-                                                )
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         );
