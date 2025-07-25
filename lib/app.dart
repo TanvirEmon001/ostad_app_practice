@@ -7,6 +7,7 @@ import 'package:ostad_flutter/list_view_practice.dart';
 import 'package:ostad_flutter/modul_3_stack.dart';
 import 'package:ostad_flutter/modul_8_class_3.dart';
 import 'package:ostad_flutter/stack_example.dart';
+import 'package:ostad_flutter/ticket_card.dart';
 import 'package:ostad_flutter/tour_app.dart';
 
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: "Tanvir Emon",
       debugShowCheckedModeBanner: false,
-      home: TourApp(),
+      home: TicketCard(),
     );
   }
 
