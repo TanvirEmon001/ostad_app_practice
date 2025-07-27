@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ostad_flutter/alert_dialog_practice.dart';
 import 'package:ostad_flutter/facebook_ui.dart';
+import 'package:ostad_flutter/disney_queen/frozen_queen.dart';
 import 'package:ostad_flutter/grid_view_builder.dart';
 import 'package:ostad_flutter/input_form.dart';
 
@@ -22,7 +23,13 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: "Tanvir Emon",
       debugShowCheckedModeBanner: false,
-      home: FacebookUi(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.greenAccent
+        )
+      ),
+      home: FrozenQueen(),
     );
   }
 
