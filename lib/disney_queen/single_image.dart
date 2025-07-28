@@ -14,13 +14,19 @@ class SingleImage extends StatelessWidget {
           child: Card(
             elevation: 10,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15)
+              borderRadius: BorderRadius.circular(15),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: FadeInImage.assetNetwork(
+              child: InteractiveViewer(
+                panEnabled: true, // Enable panning
+                minScale: 0.5,
+                maxScale: 4.0,
+                child: FadeInImage.assetNetwork(
                   placeholder: 'assets/loading.gif',
-                image: url!,
+                  image: url!,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),
